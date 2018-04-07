@@ -1,19 +1,18 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
-[Oo]bj/ # FlashDevelop obj
-[Bb]in/ # FlashDevelop bin
-
-# Other files and folders
-.settings/
-
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+//WorldViewCBnum = 2;
+//ProjCBnum = 1;
+//matProjnum = 16;
+ 
+XMVECTOR v2 = XMVectorSet(0.0f, 0.0f, (float)aimheight*40.0f, 1.0f);//aimheight
+ 
+DirectX::XMFLOAT3 pOut2d;
+ 
+DirectX::XMMATRIX pWorld = DirectX::XMMatrixIdentity();
+ 
+DirectX::XMVECTOR pOut = DirectX::XMVector3Project(v2, 0, 0, viewport.Width, viewport.Height, 0, 1, (FXMMATRIX)*matProj, (FXMMATRIX)*matWorldView, pWorld);
+ 
+DirectX::XMStoreFloat3(&pOut2d, pOut);
+ 
+	//x, y:
+	pOut.m128_f32[0], pOut.m128_f32[1]
+	or
+	pOut2d.x, pOut2d.y
